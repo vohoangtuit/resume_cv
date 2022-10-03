@@ -6,6 +6,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -279,6 +280,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
 //        mRewardedVideoAd.pause(this);
+        Log.e("Tú ","MainActivity onPause()");
         super.onPause();
         mediaPlayer.stop();
         mediaPlayer.release();
@@ -286,6 +288,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
+        Log.e("Tú ","MainActivity onResume()");
 //        mRewardedVideoAd.resume(this);
         super.onResume();
 

@@ -2,6 +2,7 @@ package com.dualDev.cvMaker.helper;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -26,8 +27,8 @@ abstract public class ResumeFragment extends Fragment {
     protected Handler handlerLoop;
     protected Runnable runnable;
     private long delayAds = 0;
-    private ClassAds classAds;
-    private InterstitialAd mInterstitialAd;
+    public ClassAds classAds;
+    public InterstitialAd mInterstitialAd;
 
 
     public void setResume(Resume resume, long delayAds) {
@@ -55,7 +56,7 @@ abstract public class ResumeFragment extends Fragment {
             MobileAds.initialize(getContext(), getResources().getString(R.string.admob_app_id));
             AdView adView = view.findViewById(R.id.adView);
             AdRequest adRequest = new AdRequest.Builder().build();
-            adView.loadAd(adRequest);
+            //adView.loadAd(adRequest);// todo Tú: banner bottom
         }
 
         handlerInterstitial = new Handler();
@@ -63,12 +64,17 @@ abstract public class ResumeFragment extends Fragment {
         runnable = new Runnable() {
             @Override
             public void run() {
-                classAds.mobileAds(getContext(), mInterstitialAd);
+              //  classAds.mobileAds(getContext(), mInterstitialAd); // todo Tú: fullscreen
+                Log.e("Tú ","run 1111111111");
                 handlerLoop.postDelayed(this, delayAds * Const.LOOP_DELAY);
             }
         };
         if (!(ResumeFragment.this instanceof PrivacyFragment)) {
+            Log.e("Tú ","run 222222222");
             handlerInterstitial.postDelayed(runnable, delayAds);
+
+        }else{
+            Log.e("Tú ","run 3333333333");
         }
     }
 

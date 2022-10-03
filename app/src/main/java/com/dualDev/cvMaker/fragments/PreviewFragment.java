@@ -10,6 +10,8 @@ import android.print.PrintManager;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -37,6 +39,7 @@ import com.google.android.gms.ads.reward.RewardedVideoAdListener;
  */
 public class PreviewFragment extends ResumeFragment {
     WebView webView;
+    boolean printClick =false;
 
     public static ResumeFragment newInstance(Resume resume) {
         ResumeFragment fragment = new PreviewFragment();
@@ -182,9 +185,14 @@ public class PreviewFragment extends ResumeFragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_print) {
-            createWebPrintJob(webView);
+          //  createWebPrintJob(webView);// todo old
+            viewAds();// todo new
         }
         return super.onOptionsItemSelected(item);
+    }
+    private void viewAds(){
+          classAds.mobileAds(getContext(), mInterstitialAd); // todo Tú: fullscreen
+        printClick =true;
     }
 
     private void createWebPrintJob(WebView webView) {
@@ -200,6 +208,15 @@ public class PreviewFragment extends ResumeFragment {
         String jobName = getString(R.string.app_name) + " Document";
         PrintJob printJob = printManager.print(jobName, printAdapter,
                 new PrintAttributes.Builder().build());
+        printClick =false;
     }
 
+    @Override
+    public void onResume() {
+        Log.e("Tú ","PreviewFragment onResume()");
+        super.onResume();
+        if( printClick){
+            createWebPrintJob(webView);
+        }
+    }
 }
