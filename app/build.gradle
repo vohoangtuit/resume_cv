@@ -9,9 +9,8 @@ android {
         minSdkVersion 23
         targetSdkVersion 33
         multiDexEnabled true
-        versionCode 19
+        versionCode 29
         versionName "2.9"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     signingConfigs {
@@ -24,11 +23,11 @@ android {
     }
     buildTypes {
         release {
-//            debuggable = true
-            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 //             signingConfig signingConfigs.config
-            signingConfig signingConfigs.release
+           // signingConfig signingConfigs.release
+            shrinkResources true
+            minifyEnabled true
         }
 
     }
@@ -48,8 +47,8 @@ dependencies {
 
 
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
 
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
@@ -64,17 +63,18 @@ dependencies {
     //FIREBASE
 
     implementation "com.google.firebase:firebase-core:$rootProject.firebaseVersion"
+    //noinspection OutdatedLibrary
     implementation "com.crashlytics.sdk.android:crashlytics:$rootProject.crashlyticsVersion"
     implementation "com.google.firebase:firebase-analytics:$rootProject.analyticsVersion"
     implementation "com.google.firebase:firebase-messaging:$rootProject.messageingVersion"
 
     //Batch
-    implementation "com.batch.android:batch-sdk:$rootProject.batchVersion"
-    implementation "com.google.android.gms:play-services-ads-identifier:$rootProject.identifierVersion"
+    implementation 'com.batch.android:batch-sdk:1.19+'
+    implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
 
     implementation "com.google.android.gms:play-services-ads:$rootProject.admobVersion"
     implementation 'com.google.firebase:firebase-ads:18.2.0'
-    implementation 'com.google.android.play:core:1.6.4'
+    implementation 'com.google.android.play:core:1.9.0'
     implementation 'com.android.support:multidex:1.0.3'// or 2.0.1
 
 }

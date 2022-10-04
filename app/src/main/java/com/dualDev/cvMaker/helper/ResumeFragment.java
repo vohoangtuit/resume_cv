@@ -1,5 +1,6 @@
 package com.dualDev.cvMaker.helper;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -42,6 +43,7 @@ abstract public class ResumeFragment extends Fragment {
         return getArguments().getParcelable(ARGUMENT_RESUME);
     }
 
+    @SuppressLint("MissingPermission")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
