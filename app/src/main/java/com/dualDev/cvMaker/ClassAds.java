@@ -2,11 +2,14 @@ package com.dualDev.cvMaker;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.reward.RewardItem;
+import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 
 public class ClassAds {
 
@@ -26,5 +29,48 @@ public class ClassAds {
                 }
             }
         });
+        // todo check status ads
+        mInterstitialAd.setRewardedVideoAdListener(new RewardedVideoAdListener() {
+            @Override
+            public void onRewardedVideoAdLoaded() {
+                Log.e("Tú ","onRewardedVideoAdLoaded");
+            }
+
+            @Override
+            public void onRewardedVideoAdOpened() {
+                Log.e("Tú ","onRewardedVideoAdOpened");
+            }
+
+            @Override
+            public void onRewardedVideoStarted() {
+                Log.e("Tú ","onRewardedVideoStarted");
+            }
+
+            @Override
+            public void onRewardedVideoAdClosed() {
+                Log.e("Tú ","onRewardedVideoAdClosed");
+            }
+
+            @Override
+            public void onRewarded(RewardItem rewardItem) {
+                Log.e("Tú ","onRewarded");
+            }
+
+            @Override
+            public void onRewardedVideoAdLeftApplication() {
+                Log.e("Tú ","onRewardedVideoAdLeftApplication");
+            }
+
+            @Override
+            public void onRewardedVideoAdFailedToLoad(int i) {
+                Log.e("Tú ","onRewardedVideoAdFailedToLoad");
+            }
+
+            @Override
+            public void onRewardedVideoCompleted() {
+                Log.e("Tú ","onRewardedVideoCompleted");
+            }
+        });
+
     }
 }

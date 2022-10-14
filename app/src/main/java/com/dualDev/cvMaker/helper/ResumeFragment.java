@@ -58,7 +58,7 @@ abstract public class ResumeFragment extends Fragment {
             MobileAds.initialize(getContext(), getResources().getString(R.string.admob_app_id));
             AdView adView = view.findViewById(R.id.adView);
             AdRequest adRequest = new AdRequest.Builder().build();
-            //adView.loadAd(adRequest);// todo Tú: banner bottom
+            adView.loadAd(adRequest);// todo Tú: banner bottom
         }
 
         handlerInterstitial = new Handler();

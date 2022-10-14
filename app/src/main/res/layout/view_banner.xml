@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@color/dot_dark_screen1"
+
+    android:orientation="horizontal">
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/play"
+        android:layout_margin="10dp"
+        >
+
+    </ImageView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/title_banner"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/dot_light_screen1"
+        android:textSize="@dimen/slide_desc"
+        android:gravity="center_vertical"
+        >
+    </TextView>
+
+</LinearLayout>

@@ -11,6 +11,16 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/adView" />
 
+    <include
+        android:id="@+id/banner"
+        layout="@layout/view_banner"
+        android:layout_above="@+id/adView"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/text_size_input"
+        android:layout_marginBottom="@dimen/edit_margin_top"
+        android:layout_width="match_parent" />
+
+
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
         android:layout_width="match_parent"

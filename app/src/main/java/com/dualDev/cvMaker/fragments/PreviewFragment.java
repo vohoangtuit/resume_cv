@@ -39,6 +39,7 @@ import com.google.android.gms.ads.reward.RewardedVideoAdListener;
  */
 public class PreviewFragment extends ResumeFragment {
     WebView webView;
+    View banner;
     boolean printClick =false;
 
     public static ResumeFragment newInstance(Resume resume) {
@@ -52,12 +53,14 @@ public class PreviewFragment extends ResumeFragment {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
     }
-
+//
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_preview, container, false);
         webView = view.findViewById(R.id.webView);
+        banner = view.findViewById(R.id.banner);
+        banner.setVisibility(View.GONE);
         StringBuilder htmlContent = new StringBuilder();
         Resume resume = getResume();
         PersonalInfo personalInfo = resume.personalInfo;
@@ -173,6 +176,7 @@ public class PreviewFragment extends ResumeFragment {
                 "</body>\n" +
                 "</html>");
         webView.loadDataWithBaseURL(null, htmlContent.toString(), "text/html", "utf-8", null);
+        init();
         return view;
     }
 
@@ -186,14 +190,12 @@ public class PreviewFragment extends ResumeFragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_print) {
           //  createWebPrintJob(webView);// todo old
-            viewAds();// todo new
+            printButtonClick();
+
         }
         return super.onOptionsItemSelected(item);
     }
-    private void viewAds(){
-          classAds.mobileAds(getContext(), mInterstitialAd); // todo Tú: fullscreen
-        printClick =true;
-    }
+
 
     private void createWebPrintJob(WebView webView) {
 
@@ -209,6 +211,25 @@ public class PreviewFragment extends ResumeFragment {
         PrintJob printJob = printManager.print(jobName, printAdapter,
                 new PrintAttributes.Builder().build());
         printClick =false;
+    }
+    private void viewAds(){
+        classAds.mobileAds(getContext(), mInterstitialAd); // todo Tú: fullscreen
+        printClick =true;
+        banner.setVisibility(View.GONE);
+    }
+    private void init(){
+        onClick();
+    }
+    private void printButtonClick(){
+        banner.setVisibility(View.VISIBLE);
+      //  viewAds();// todo new
+    }
+
+    private void onClick(){
+        banner.setOnClickListener(v -> {
+            viewAds();
+
+        });
     }
 
     @Override
