@@ -28,5 +28,5 @@
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
         app:adSize="SMART_BANNER"
-        app:adUnitId="@string/admob_banner" />
+        app:adUnitId="@string/admob_reward" />
 </RelativeLayout>
