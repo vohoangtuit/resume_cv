@@ -180,7 +180,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:adSize="SMART_BANNER"
-        app:adUnitId="@string/admob_reward" />
+        app:adUnitId="@string/admob_banner" />
 </LinearLayout>
 
 
