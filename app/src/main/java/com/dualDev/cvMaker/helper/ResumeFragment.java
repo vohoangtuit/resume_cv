@@ -49,13 +49,13 @@ abstract public class ResumeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         classAds = new ClassAds();
         mInterstitialAd = new InterstitialAd(view.getContext());
-        mInterstitialAd.setAdUnitId(getResources().getString(R.string.admob_banner));//  admob_interstitial
+        mInterstitialAd.setAdUnitId(getResources().getString(R.string.admob_interstitial));//  admob_interstitial // admob_banner
 
         if (getArguments() != null) {
             delayAds = getArguments().getLong(ARGUMENT_DELAY_ADS);
         }
         if (view.findViewById(R.id.adView) != null) {
-            MobileAds.initialize(getContext(), getResources().getString(R.string.admob_banner));//  admob_interstitial
+            MobileAds.initialize(getContext(), getResources().getString(R.string.admob_interstitial));//  admob_interstitial // admob_banner
             AdView adView = view.findViewById(R.id.adView);
             AdRequest adRequest = new AdRequest.Builder().build();
             adView.loadAd(adRequest);// todo Tú: banner bottom
