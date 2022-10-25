@@ -55,7 +55,7 @@ abstract public class ResumeFragment extends Fragment {
             delayAds = getArguments().getLong(ARGUMENT_DELAY_ADS);
         }
         if (view.findViewById(R.id.adView) != null) {
-            MobileAds.initialize(getContext(), getResources().getString(R.string.admob_interstitial));//  admob_interstitial // admob_banner
+            MobileAds.initialize(getContext(), getResources().getString(R.string.admob_app_id));//  admob_interstitial // admob_banner
             AdView adView = view.findViewById(R.id.adView);
             AdRequest adRequest = new AdRequest.Builder().build();
             adView.loadAd(adRequest);// todo Tú: banner bottom
